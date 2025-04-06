@@ -36,7 +36,6 @@ sudo nano /persist/ngrok/ngrok.yml
 
 > **_HINT:_** `Edge-label` should look something like `edghts_XXXXXXXXXXXXXXXXXXXX`
 
-
 ```
 version: "3"
 tunnels:
@@ -50,6 +49,7 @@ tunnels:
 agent:
     authtoken: <auth_token>
 ```
+
 8. Remount / as rw, Install ngrok as service, Start ngrok as service, Reboot and test
 ```
 sudo mount -o remount,rw /
@@ -57,3 +57,35 @@ sudo ngrok service install --config /persist/ngrok/ngrok.yml
 sudo ngrok service start
 sudo reboot
 ```
+
+## Setup traccar
+
+1. Mount and clone traccar-python-client
+```
+sudo mount -o remount,rw /persist
+cd /persist
+git clone https://github.com/webnizam/traccar-python-client
+cd traccar-python-client
+```
+
+2. Edit .env config
+```
+sudo nano .env
+```
+
+```
+DB_PATH=/run/shm/gps_data.db
+BUFFER_SIZE=10
+SERVER_URL=<traccar server URL>
+DEVICE_ID=<traccar device ID>
+UPDATE_FREQUENCY=5
+```
+
+3. Remount / as rw, run setup sevice, reboot and test
+```
+sudo mount -o remount,rw /
+sudo bash setup_service.sh
+sudo reboot
+systemctl status gps-tracker.service
+```
+
