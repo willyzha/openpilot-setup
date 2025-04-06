@@ -32,7 +32,11 @@ sudo mount -o remount,rw /
 sudo nano /persist/ngrok/ngrok.yml
 ```
 
-7. Add your Authtoken and Edge-label from ngrok website and copy the modified example into ngrok.yml
+7. Add your [Authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) and [Edge-label](https://dashboard.ngrok.com/edges) from ngrok website and copy the modified example into ngrok.yml
+
+> **_HINT:_** `Edge-label` should look something like `edghts_XXXXXXXXXXXXXXXXXXXX`
+
+
 ```
 version: "3"
 tunnels:
