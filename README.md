@@ -1,5 +1,16 @@
 # openpilot-setup
 
+## SSH
+
+1. Add SSH key to github
+
+2. Add github to comma device in networking
+
+3. SSH into comma
+```
+ssh comma@<ip_addr>
+```
+
 ## Setup ngrok
 
 1. Remount / as rw
