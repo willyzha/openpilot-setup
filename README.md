@@ -64,7 +64,7 @@ sudo ngrok service start
 sudo reboot
 ```
 
-## Setup traccar
+## Install traccar
 
 1. Mount and clone traccar-python-client
 ```
@@ -91,6 +91,22 @@ UPDATE_FREQUENCY=5
 ```
 sudo mount -o remount,rw /
 sudo bash setup_service.sh
+sudo reboot
+systemctl status gps-tracker.service
+```
+
+## Enable/Disable traccar
+```
+sudo mount -o remount,rw /
+
+# Disable
+sudo systemctl stop gps-tracker.service
+sudo systemctl disable gps-tracker.service
+
+# Enable
+sudo systemctl start gps-tracker.service
+sudo systemctl enable gps-tracker.service
+
 sudo reboot
 systemctl status gps-tracker.service
 ```
